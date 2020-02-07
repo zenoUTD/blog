@@ -1,0 +1,24 @@
+body {
+font-family: "Source Sans Pro", sans-serif;
+background: #eee;
+}
+
+.main-bg-color {
+  background-color: #f7a623;
+  color:#fff;
+}
+.secondary-bg-color {
+  background-color: #9c9768;
+  color:#fff;
+}
+
+.main-text-color {
+  color:#f7a623;
+  font-weight: 500;
+}
+.secondary-text-color {
+  color: #9c9768;
+}
+.button {
+
+}
