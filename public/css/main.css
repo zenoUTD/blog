@@ -1,6 +1,6 @@
 body {
 font-family: "Source Sans Pro", sans-serif;
-background: #eee;
+background: #1f1516;
 }
 
 .main-bg-color {
@@ -20,5 +20,23 @@ background: #eee;
   color: #9c9768;
 }
 .button {
+  height:20px;
+}
 
+.card-title
+{
+  color:#db7a05;
+  font-weight: 700;
+}
+
+.post-icon
+{
+  width: 20px;
+  height: 20px;
+  margin-top: -5px;
+}
+
+.post-time
+{
+  margin-top: -6px !important;
 }

@@ -19,7 +19,7 @@ class BlogPostController extends Controller
     public function index()
     {
 
-      $blogposts = Post::paginate(9);
+      $blogposts = Post::paginate(15);
 
         //$blogposts = DB::table('blog_posts')->paginate(9);
 
