@@ -68,12 +68,12 @@
       {{$blogpost->title}}
       </h5>
     <h6 class="card-subtitle mb-2 my-3 text-muted">
-      - {{$blogpost->author}}
+      {{$blogpost->author}}
     </h6>
 
 
     <br>
-    <p class="card-text my-3">-
+    <p class="card-text my-3">
       {{implode(' ', array_slice(explode(' ', $blogpost->content), 0, 15))}} ...
     </p>
     <a href="" class="card-link btn btn-warning"> View - {{$blogpost->view}}</a>
