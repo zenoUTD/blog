@@ -26,9 +26,9 @@ class PostsTableSeeder extends Seeder
 
       for($i=0;$i<300;$i++)
       {
-        $faker = Faker::create('App\BlogPost');
+        $faker = Faker::create('App\Post');
 
-        DB::table('blog_posts')->insert([
+        DB::table('posts')->insert([
         	'title' => $faker->sentence($nbWords = 3, $variableNbWords = true),
         	'author' => $faker->name(),
         	'content' => $faker->paragraph(),

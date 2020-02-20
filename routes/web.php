@@ -1,7 +1,9 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+
+    return redirect()->route('blog-posts.index');
 });
 
 # Blog Posts Routes

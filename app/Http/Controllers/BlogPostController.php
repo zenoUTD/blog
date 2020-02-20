@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
@@ -17,7 +18,8 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $blogposts = Post::paginate(9);
+
+      $blogposts = Post::paginate(9);
 
         //$blogposts = DB::table('blog_posts')->paginate(9);
 
@@ -115,7 +117,9 @@ class BlogPostController extends Controller
 
     public function comment(Request $request)
     {
-      Comment::create(['post_id'=>$request->post_id,'comment'=>$request->comment]);
+      //return $request;
+      //$int2 = (int) $str;
+      Comment::create(['post_id'=>$request->post_id,'comment'=>$request->comment,'user_id'=>Auth::user()->id]);
 
       return redirect()->route('blog-posts.show',$request->post_id);
     }

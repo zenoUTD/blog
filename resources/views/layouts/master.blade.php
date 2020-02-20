@@ -11,7 +11,9 @@
   </head>
   <body>
     <div class="container">
+      @if(Auth::user())
       @include('components.nav')
+      @endif
       <br>
       @yield('content')
     </div>

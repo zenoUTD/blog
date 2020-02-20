@@ -5,9 +5,9 @@
 <div class="row">
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-lg mb-5 main-bg-color" data-toggle="modal" data-target="#exampleModal">
+  <!-- <button type="button" class="btn btn-lg mb-5 main-bg-color" data-toggle="modal" data-target="#exampleModal">
     Subscribe Now
-  </button>
+  </button> -->
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
