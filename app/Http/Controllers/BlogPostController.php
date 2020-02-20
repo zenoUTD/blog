@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
-use App\BlogPost;
+use App\Post;
+use App\Comment;
 
 class BlogPostController extends Controller
 {
@@ -64,14 +65,14 @@ class BlogPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Post $model)
     {
+      $comments  = $model::whereId($id)->first()->comments;
 
-      $blogPost = BlogPost::find($id);
+      Post::whereId($id)->where('id',$id)->update(['view'=>$model::find($id)->view + 1]);
 
-      BlogPost::where('id',$id)->update(['view'=>$blogPost->view + 1]);
+      return view('blogposts.show',['post'=>$model::find($id)],compact('comments'));
 
-      return view('blogposts.show',['post'=>BlogPost::find($id)]);
     }
 
     /**
@@ -110,5 +111,12 @@ class BlogPostController extends Controller
         $blogPost->delete();
         session()->flash('status', 'Post id('.$id.')  is deleted .');
         return redirect()->route('blog-posts.index');
+    }
+
+    public function comment(Request $request)
+    {
+      Comment::create(['post_id'=>$request->post_id,'comment'=>$request->comment]);
+
+      return redirect()->route('blog-posts.show',$request->post_id);
     }
 }

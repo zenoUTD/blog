@@ -11,6 +11,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('blog-posts','BlogPostController');
 
+Route::post('post-comment','BlogPostController@comment')->name('post-comment');
+
 Route::resource('subscribers','SubscriberController')->only(['store']);
 
 Route::get('mail-confirmation','SubscriberController@mail_confirmation');
