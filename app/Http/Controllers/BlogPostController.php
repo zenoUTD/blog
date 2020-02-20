@@ -17,7 +17,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-        $blogposts = BlogPost::paginate(9);
+        $blogposts = Post::paginate(9);
 
         //$blogposts = DB::table('blog_posts')->paginate(9);
 
@@ -52,7 +52,7 @@ class BlogPostController extends Controller
          // $blogPost->view = 0;
          // $blogPost->save();
 
-        BlogPost::create(['title'=>$request->title,'author'=>$request->author,'content'=>$request->content]);
+        Post::create(['title'=>$request->title,'author'=>$request->author,'content'=>$request->content]);
 
         session()->flash('status', 'New post is announced.');
 
@@ -83,7 +83,7 @@ class BlogPostController extends Controller
      */
     public function edit($id)
     {
-        return view('blogposts.edit',['post'=>BlogPost::find($id)]);
+        return view('blogposts.edit',['post'=>Post::find($id)]);
     }
 
     /**
@@ -95,7 +95,7 @@ class BlogPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-      BlogPost::where('id',$id)->update(['title'=>$request->title,'author'=>$request->author,'content'=>$request->content]);
+      Post::where('id',$id)->update(['title'=>$request->title,'author'=>$request->author,'content'=>$request->content]);
       return redirect()->route('blog-posts.show',['blog_post'=>$id]);
     }
 
@@ -107,7 +107,7 @@ class BlogPostController extends Controller
      */
     public function destroy($id)
     {
-        $blogPost = BlogPost::find($id);
+        $blogPost = Post::find($id);
         $blogPost->delete();
         session()->flash('status', 'Post id('.$id.')  is deleted .');
         return redirect()->route('blog-posts.index');
