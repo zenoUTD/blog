@@ -39,24 +39,28 @@
     </div>
 </form>
 
-<div class="row my-5">
-  <div class="col-md-12">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-4">
+      <a href="{{ url('blog-posts') }}" class="float-left btn btn-primary mt-4"> Back </a>
+      </div>
+      <div class="col-md-6">
+        @if(Auth::user())
+        @if(Auth::user()->role->name == 'admin')
+        <!---Start Admin Permision -->
+        <form action="{{url('blog-posts/'.$post->id)}}" method="post">
+          @csrf
+          <input name="_method" type="hidden" value="DELETE">
+          <button type="submit" class="float-right btn btn-danger mt-4" name="button">Delete</button>
+        </form>
+        <a href="{{ route('blog-posts.edit',['blog_post'=>$post->id]) }}" class="float-right btn btn-info mt-4 mx-5"> Edit </a>
+        <!--- End Admin Permision -->
+        @endif
+        @endif
+      </div>
+    </div>
 
-  <a href="{{ url('blog-posts') }}" class="float-left btn btn-success mt-4"> Back </a>
 
-  @if(Auth::user())
-  @if(Auth::user()->role->name == 'admin')
-  <!---Start Admin Permision -->
-  <form action="{{url('blog-posts/'.$post->id)}}" method="post">
-    @csrf
-    <input name="_method" type="hidden" value="DELETE">
-    <button type="submit" class="float-right btn btn-danger mt-4" name="button">Delete</button>
-  </form>
-  <a href="{{ route('blog-posts.edit',['blog_post'=>$post->id]) }}" class="float-right btn btn-info mt-4 mx-5"> Edit </a>
-  <!--- End Admin Permision -->
-  @endif
 
-  @endif
   </div>
-</div>
 @endsection
