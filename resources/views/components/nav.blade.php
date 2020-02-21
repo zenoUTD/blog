@@ -17,9 +17,8 @@
                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                  <a class="dropdown-item" href="{{url('blog-posts')}}">View All</a>
                  @if(Auth::user())
-                 @if(Auth::user()->role->name == "admin")
                  <a class="dropdown-item" href="{{ route('blog-posts.create') }}"> Create </a>
-                 @endif
+              
                  @endif
                </div>
              </li>
