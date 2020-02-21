@@ -6,17 +6,17 @@
 
   <p class="text-danger mb-4">(author - {{ $post->author }}  , view - {{$post->view-1}})</p>
 
-  <p>{{$post->content}}</p>
+  <p class="text-white">{{$post->content}}</p>
 
-  <span class="font-weight-bold">Comments</span>
+  <span class="font-weight-bold text-white">Comments</span>
   <form action="{{route('post-comment')}}" method="POST">
   @csrf
   @foreach($comments as $comment)
   <div class="form-group">
     <br>
-    <span class="float-left text-primary">{{$comment->user->name}}</span>
-    <span class="float-right text-primary">{{$comment->created_at->diffForHumans()}}</span>
-    
+    <span class="float-left text-primary text-white">{{$comment->user->name}}</span>
+    <span class="float-right text-primary text-white">{{$comment->created_at->diffForHumans()}}</span>
+
     <input class="form-control" type="text" value="{{$comment->comment}}" readonly>
 
   </div>
@@ -25,7 +25,7 @@
   @if(Auth::user())
   <input type="hidden" name="post_id" value="{{$post->id}}">
   <br>
-  <span>Enter your comment :</span>
+  <span class="text-white">Enter your comment :</span>
   <div class="row">
 
   <div class="form-group col-md-10">

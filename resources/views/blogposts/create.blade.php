@@ -19,12 +19,6 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputAuthor" class="col-sm-2 col-form-label text-primary">Author</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputAuthor" name="author" placeholder="Author" value="{{old('author')}}">
-    </div>
-  </div>
-  <div class="form-group row">
     <label for="inputContent" class="col-sm-2 col-form-label text-primary">Content</label>
     <div class="col-sm-10">
       <textarea name="content" class="form-control" rows="8" cols="80">{{old('content')}}</textarea>

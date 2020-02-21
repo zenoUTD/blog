@@ -54,7 +54,7 @@ class BlogPostController extends Controller
          // $blogPost->view = 0;
          // $blogPost->save();
 
-        Post::create(['title'=>$request->title,'author'=>$request->author,'content'=>$request->content]);
+        Post::create(['title'=>$request->title,'author'=>Auth::user()->name,'content'=>$request->content]);
 
         session()->flash('status', 'New post is announced.');
 
