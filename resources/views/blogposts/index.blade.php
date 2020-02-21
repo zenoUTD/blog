@@ -95,8 +95,7 @@
 </div>
 
 <div class="row mt-3">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">  {{ $blogposts->links() }} </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-5"></div>
+  <div class="col-md-7">  {{ $blogposts->links() }} </div>
 </div>
 @endsection
