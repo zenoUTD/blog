@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Role;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,10 @@ class User extends Authenticatable
     public function comments()
     {
       return $this->hasMany(App\Comment::class);
+    }
+
+    public function posts()
+    {
+      return $this->hasMany(Post::class);
     }
 }

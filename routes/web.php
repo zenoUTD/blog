@@ -13,6 +13,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::resource('blog-posts','BlogPostController');
 
+Route::get('authors','AuthorController@viewAll')->name('authors');
+Route::get('authors/delete/{id}','AuthorController@delete')->name('author-delete');
+
 Route::post('post-comment','BlogPostController@comment')->name('post-comment');
 
 Route::resource('subscribers','SubscriberController')->only(['store']);

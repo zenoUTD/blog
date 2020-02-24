@@ -3,14 +3,20 @@
 namespace App;
 
 use App\Comment;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-   protected $fillable = ['title','author','content','view'];
+   protected $fillable = ['title','user_id','content','view'];
 
    public function comments()
    {
      return $this->hasMany(Comment::class);
+   }
+
+   public function user()
+   {
+     return $this->belongsTo(User::class);
    }
 }

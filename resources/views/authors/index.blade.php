@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Blog Posts')
+@section('title','Authors')
 @section('content')
 
 @if(!Auth::user())
@@ -56,31 +56,30 @@
   </div>
   @endif
 
-@forelse($blogposts as $blogpost)
+@forelse($authors as $author)
+
+@if($author->role->name != 'admin' && $author->name != 'Unknown')
 <div class="card my-3 mx-4" style="width:20rem;">
   <div class="card-body">
-    <h6 class="card-subtitle float-right mb-4 text-primary post-time">
-      <img src="{{asset('icons/clock-regular.svg')}}" alt="" class="post-icon">
-      {{\Carbon\Carbon::parse($blogpost->created_at)->diffForHumans()}}
-    </h6>
-    <br> <br>
-    <h5 class="card-title">
-      {{$blogpost->title}}
-      </h5>
+    <img src="https://www.pngkey.com/png/detail/230-2301779_best-classified-apps-default-user-profile.png" alt="" class="img-fluid rounded">
+    <h5 class="card-title mt-3">
+      {{$author->name}}
+    </h5>
     <h6 class="card-subtitle mb-2 my-3 text-muted">
-      {{$blogpost->user->name}}
+      Stars - 5
     </h6>
-
 
     <br>
     <p class="card-text my-3">
-      {{implode(' ', array_slice(explode(' ', $blogpost->content), 0, 15))}} ...
+
     </p>
-    <a href="" class="card-link btn btn-warning"> View - {{$blogpost->view}}</a>
-    <a href="{{ route('blog-posts.show',['blog_post'=>$blogpost->id]) }}" class="card-link float-right btn btn-primary"> Read More</a>
+    @if(Auth::user()->role->name == 'admin')
+    <a href="{{route('author-delete',$author->id)}}" class="card-link btn btn-danger">Delete</a>
+    @endif
+    <a href="{{ route('blog-posts.show',['blog_post'=>$author->id]) }}" class="card-link float-right btn btn-primary"> Read More</a>
   </div>
 </div>
-
+@endif
 @empty
 
 <div class="jumbotron col-md-12">
@@ -96,6 +95,6 @@
 
 <div class="row mt-3">
   <div class="col-md-5"></div>
-  <div class="col-md-7">  {{ $blogposts->links() }} </div>
+  <div class="col-md-7">  {{ $authors->links() }} </div>
 </div>
 @endsection

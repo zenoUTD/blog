@@ -24,13 +24,12 @@ class PostsTableSeeder extends Seeder
       //   ]);
       // }
 
-      for($i=0;$i<300;$i++)
+      for($i=0;$i<60;$i++)
       {
         $faker = Faker::create('App\Post');
-
         DB::table('posts')->insert([
         	'title' => $faker->sentence($nbWords = 3, $variableNbWords = true),
-        	'author' => $faker->name(),
+        	'user_id' => $faker->numberBetween($min = 1, $max = 3),
         	'content' => $faker->paragraph(),
         	'created_at' => Carbon::now(),
         	'Updated_at' => Carbon::now(),
