@@ -19,7 +19,7 @@ class AuthorController extends Controller
       // $posts = Post::where('user_id','=',$id)->get();
       // for($i=0;$i<count($posts);$i++)
       // {
-      //   Post::where('user_id',,$posts[$i]->id)->update(['user_id',4]);
+      //   Post::where('user_id','=',$posts[$i]->id)->update(['user_id',4]);
       // }
 
       User::find($id)->delete();

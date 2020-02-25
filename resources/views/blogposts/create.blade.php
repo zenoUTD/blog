@@ -10,7 +10,7 @@
   @endforeach
 @endif
 
-<form action="{{url('blog-posts')}}" method="post">
+<form action="{{url('blog-posts')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="form-group row">
     <label for="inputTitle" class="col-sm-2 col-form-label text-primary">Title</label>
@@ -18,6 +18,14 @@
       <input type="text" class="form-control" id="inputTitle" name="title" placeholder="Title" vlaue={{old('title')}}>
     </div>
   </div>
+  <div class="form-group row">
+    <label for="inputTitle" class="col-sm-2 col-form-label text-primary">Upload Image</label>
+    <div class="col-sm-10">
+      <input type="file" class="custom-file-input" name="image" id="inputGroupFile01">
+      <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    </div>
+  </div>
+
   <div class="form-group row">
     <label for="inputContent" class="col-sm-2 col-form-label text-primary">Content</label>
     <div class="col-sm-10">

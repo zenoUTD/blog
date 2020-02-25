@@ -17,13 +17,14 @@
                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                  <a class="dropdown-item" href="{{url('blog-posts')}}">View All</a>
                  @Auth
-                 @if(Auth::user()->role =='author')
+                 @if(Auth::user()->role->name =='author')
                  <a class="dropdown-item" href="{{ route('blog-posts.create') }}"> Create </a>
                  @endif
                  @endAuth
                </div>
              </li>
             </ul>
+            @if(Auth::user())
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,13 +32,12 @@
                </a>
                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                  <a class="dropdown-item" href="{{url('authors')}}">View All</a>
-                 @if(Auth::user())
                  <a class="dropdown-item" href="{{ route('blog-posts.create') }}"> Vote </a>
-                 @endif
+
                </div>
              </li>
             </ul>
-
+            @endif
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->

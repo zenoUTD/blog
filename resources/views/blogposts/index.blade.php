@@ -70,8 +70,11 @@
     <h6 class="card-subtitle mb-2 my-3 text-muted">
       {{$blogpost->user->name}}
     </h6>
-
-
+    @if($blogpost->image !=Null)
+    <img src="{{asset('image/author/'.$blogpost->image)}}" class="img-fluid">
+    @else
+    <img src="https://www.relevance.com/wp-content/uploads/2019/10/Copywriting-vs-Content-Writing-750x430.jpg" alt="" class="img-fluid">
+    @endif
     <br>
     <p class="card-text my-3">
       {{implode(' ', array_slice(explode(' ', $blogpost->content), 0, 15))}} ...

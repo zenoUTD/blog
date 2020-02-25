@@ -18,14 +18,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
-      dd(Post::all());
-      $blogposts = Post::paginate(15);
-
-        //$blogposts = DB::table('blog_posts')->paginate(9);
-
-        return view('blogposts.index',['blogposts'=>$blogposts]);
-
-
+        return view('blogposts.index',['blogposts'=>Post::paginate(15)]);
 
     }
 
@@ -47,15 +40,14 @@ class BlogPostController extends Controller
      */
     public function store(StoreBlogPost $request)
     {
-         // $blogPost = new BlogPost;
-         // $blogPost->title = $request->title;
-         // $blogPost->author = $request->author;
-         // $blogPost->content = $request->content;
-         // $blogPost->view = 0;
-         // $blogPost->save();
 
-        Post::create(['title'=>$request->title,'author'=>Auth::user()->name,'content'=>$request->content]);
+        $file = $request->file('image');
 
+        $file_name = uniqid().'_'.$request->image->getClientOriginalName();
+
+        $file->move(public_path().'/image/author/',$file_name);
+
+        Post::create(['title'=>$request->title,'user_id'=>Auth::user()->id,'image'=>$file_name,'content'=>$request->content]);
         session()->flash('status', 'New post is announced.');
 
         return redirect()->route('blog-posts.index');
