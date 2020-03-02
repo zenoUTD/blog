@@ -1,8 +1,6 @@
 <?php
 
 Route::get('/', function () {
-    //return view('welcome');
-
     return redirect()->route('blog-posts.index');
 });
 
@@ -10,6 +8,13 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
 //
 });
+
+Route::group(['middleware' => ['author']], function () {
+
+  Route::get('blog-posts/create','BlogPostController@create');
+
+});
+
 
 Route::resource('blog-posts','BlogPostController');
 
@@ -27,10 +32,3 @@ Route::post('mail-confirmation','SubscriberController@confirmation')->name('mail
 Auth::routes();
 
 Route::get('/home', 'BlogPostController@index')->name('home');
-
-
-
-// Route::get('ajax',function() {
-//    return view('message');
-// });
-// Route::post('/getmsg','AjaxController@index');
