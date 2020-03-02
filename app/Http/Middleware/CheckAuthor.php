@@ -19,9 +19,7 @@ class CheckAuthor
         return $next($request);
 
       } else {
-      // return redirect()->route('blog-posts.index');
-      //  return $next($request);
-
+        return $next($request);
       }
 
     }

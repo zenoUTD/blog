@@ -9,13 +9,6 @@ Route::group(['middleware' => ['auth']], function () {
 //
 });
 
-Route::group(['middleware' => ['author']], function () {
-
-  Route::get('blog-posts/create','BlogPostController@create');
-
-});
-
-
 Route::resource('blog-posts','BlogPostController');
 
 Route::get('authors','AuthorController@viewAll')->name('authors');

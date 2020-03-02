@@ -9,6 +9,7 @@ class BlogPost extends Model
 {
    //protected $table = "posts";
 
+
    protected $fillable = ['title','author','content','view'];
 
    public function comments()
